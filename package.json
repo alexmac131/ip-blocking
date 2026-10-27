@@ -2,6 +2,7 @@
   "name": "ip-blocking-tools",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "Nginx traffic reports, persistent history of attempted exploit scans, and reviewed IP blocking helpers.",
   "engines": {
     "node": ">=24"

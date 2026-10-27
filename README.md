@@ -73,8 +73,12 @@ IP and path data may be sensitive. A suspicious path is not proof of abuse,
 and two addresses in a subnet are not sufficient justification to ban its
 256-address `/24`.
 
-## Repository status
+## License and publishing
 
-This is a local Git project, not a published GitHub repository. No remote or
-initial commit is created automatically. Choose a license and review content
-before publishing. `private: true` prevents accidental npm publication.
+This project is licensed under the [MIT License](./LICENSE). You may use,
+modify, and distribute it, including commercially, provided you retain the
+copyright and license notice.
+
+`private: true` in `package.json` prevents accidental npm publication; it does
+not prevent publishing this source repository on GitHub. Review repository
+contents for sensitive data before making it public.
