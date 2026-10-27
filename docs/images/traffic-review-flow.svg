@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1350" viewBox="0 0 1200 1350" role="img" aria-labelledby="title description">
+  <title id="title">Traffic review and blocking process</title>
+  <desc id="description">Nginx access logs are analyzed. Known routes and assets are treated as likely legitimate. Unknown requests are checked for scan signatures or repeated errors. Suspected activity is recorded and reviewed by an operator. False positives remain unblocked; confirmed abusive IPs are added to the reviewed block list and synchronized to Nginx for future requests.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#52657a"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #172b4d; }
+      .title { font-size: 30px; font-weight: 700; }
+      .subtitle { font-size: 16px; fill: #425466; }
+      .node-title { font-size: 18px; font-weight: 700; }
+      .node-copy { font-size: 15px; fill: #344563; }
+      .branch { font-size: 14px; font-weight: 700; }
+      .box { stroke-width: 2; rx: 14; }
+      .neutral { fill: #f4f7fb; stroke: #8a9bb0; }
+      .legal { fill: #e6f4ea; stroke: #388659; }
+      .suspect { fill: #fff3d6; stroke: #c28a18; }
+      .review { fill: #eaf1ff; stroke: #4a70bd; }
+      .block { fill: #fde9e7; stroke: #c9372c; }
+      .line { fill: none; stroke: #52657a; stroke-width: 2.5; marker-end: url(#arrow); }
+      .line-dashed { fill: none; stroke: #52657a; stroke-width: 2.5; stroke-dasharray: 8 6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="1350" fill="#ffffff"/>
+  <text x="600" y="52" text-anchor="middle" class="title">Traffic review and blocking process</text>
+  <text x="600" y="82" text-anchor="middle" class="subtitle">Detection produces candidates for human review; it does not automatically block requests.</text>
+
+  <rect x="410" y="112" width="380" height="76" class="box neutral"/>
+  <text x="600" y="143" text-anchor="middle" class="node-title">Nginx access logs</text>
+  <text x="600" y="168" text-anchor="middle" class="node-copy">Request path, client IP, method, and response status</text>
+
+  <path d="M600 188 V225" class="line"/>
+  <polygon points="600,225 780,300 600,375 420,300" fill="#f4f7fb" stroke="#8a9bb0" stroke-width="2"/>
+  <text x="600" y="291" text-anchor="middle" class="node-title">Known route or</text>
+  <text x="600" y="315" text-anchor="middle" class="node-title">static asset?</text>
+  <text x="600" y="340" text-anchor="middle" class="node-copy">Based on configured route discovery</text>
+
+  <path d="M420 300 H245 V414" class="line"/>
+  <text x="316" y="286" text-anchor="middle" class="branch" fill="#247a48">YES</text>
+  <rect x="75" y="414" width="340" height="70" class="box legal"/>
+  <text x="245" y="443" text-anchor="middle" class="node-title">Likely legitimate traffic</text>
+  <text x="245" y="466" text-anchor="middle" class="node-copy">Exclude from scan candidates; do not block</text>
+
+  <path d="M600 375 V414" class="line"/>
+  <text x="622" y="401" class="branch">NO / UNKNOWN</text>
+  <polygon points="600,414 790,488 600,562 410,488" fill="#fff3d6" stroke="#c28a18" stroke-width="2"/>
+  <text x="600" y="478" text-anchor="middle" class="node-title">Scan signature or repeated</text>
+  <text x="600" y="502" text-anchor="middle" class="node-title">unknown errors?</text>
+  <text x="600" y="527" text-anchor="middle" class="node-copy">Analyzer thresholds and signatures</text>
+
+  <path d="M410 488 H245 V562" class="line"/>
+  <text x="319" y="475" text-anchor="middle" class="branch" fill="#247a48">NO</text>
+  <rect x="75" y="562" width="340" height="92" class="box legal"/>
+  <text x="245" y="596" text-anchor="middle" class="node-title">Unclassified / not flagged</text>
+  <text x="245" y="623" text-anchor="middle" class="node-copy">No automatic block; investigate if needed</text>
+
+  <path d="M790 488 H955 V562" class="line"/>
+  <text x="869" y="475" text-anchor="middle" class="branch" fill="#9a6700">YES</text>
+  <rect x="785" y="562" width="340" height="92" class="box suspect"/>
+  <text x="955" y="596" text-anchor="middle" class="node-title">Suspected scan candidate</text>
+  <text x="955" y="623" text-anchor="middle" class="node-copy">Report IP, paths, counts, and statuses</text>
+
+  <path d="M955 654 V692" class="line"/>
+  <rect x="785" y="692" width="340" height="86" class="box suspect"/>
+  <text x="955" y="726" text-anchor="middle" class="node-title">Collect attempted paths</text>
+  <text x="955" y="752" text-anchor="middle" class="node-copy">Keep persistent history and checkpoints</text>
+
+  <path d="M785 735 H600 V824" class="line"/>
+  <rect x="400" y="824" width="400" height="86" class="box review"/>
+  <text x="600" y="858" text-anchor="middle" class="node-title">Operator reviews the evidence</text>
+  <text x="600" y="884" text-anchor="middle" class="node-copy">Check route context, statuses, and IP attribution</text>
+
+  <path d="M600 910 V945" class="line"/>
+  <polygon points="600,945 790,1020 600,1095 410,1020" fill="#eaf1ff" stroke="#4a70bd" stroke-width="2"/>
+  <text x="600" y="1014" text-anchor="middle" class="node-title">Is the activity confirmed</text>
+  <text x="600" y="1038" text-anchor="middle" class="node-title">abusive?</text>
+
+  <path d="M410 1020 H245 V1122" class="line-dashed"/>
+  <text x="318" y="1006" text-anchor="middle" class="branch" fill="#315da8">NO / UNCERTAIN</text>
+  <rect x="75" y="1122" width="340" height="90" class="box legal"/>
+  <text x="245" y="1157" text-anchor="middle" class="node-title">Leave unblocked</text>
+  <text x="245" y="1184" text-anchor="middle" class="node-copy">Monitor or refine route configuration</text>
+
+  <path d="M790 1020 H955 V1122" class="line"/>
+  <text x="872" y="1006" text-anchor="middle" class="branch" fill="#a12b24">YES</text>
+  <rect x="785" y="1122" width="340" height="90" class="box block"/>
+  <text x="955" y="1157" text-anchor="middle" class="node-title">Add reviewed IP/CIDR</text>
+  <text x="955" y="1184" text-anchor="middle" class="node-copy">Update the block list deliberately</text>
+
+  <path d="M955 1212 V1245" class="line"/>
+  <rect x="785" y="1245" width="340" height="76" class="box block"/>
+  <text x="955" y="1277" text-anchor="middle" class="node-title">Sync Nginx deny rules</text>
+  <text x="955" y="1302" text-anchor="middle" class="node-copy">Future matching requests are denied</text>
+</svg>

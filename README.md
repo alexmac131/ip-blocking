@@ -20,6 +20,14 @@ npm run check
 Tests create isolated temporary fixtures; they do not contact AWS, connect to
 MongoDB, change Nginx, or ban visitors.
 
+## Traffic review process
+
+The flow below separates likely legitimate traffic from suspected scans and
+shows how an operator reviews candidates before adding any block. The reports
+and collector do not block traffic automatically.
+
+![Traffic review flow: access logs are analyzed to distinguish likely legitimate traffic from suspected scans; candidates are logged, reviewed, and only confirmed abusive IPs are added to the block list and synced to Nginx.](docs/images/traffic-review-flow.svg)
+
 ## Configure before scanning
 
 The tools retain fixed settings, not command-line switches:
