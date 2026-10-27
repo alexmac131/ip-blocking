@@ -78,7 +78,3 @@ and two addresses in a subnet are not sufficient justification to ban its
 This project is licensed under the [MIT License](./LICENSE). You may use,
 modify, and distribute it, including commercially, provided you retain the
 copyright and license notice.
-
-`private: true` in `package.json` prevents accidental npm publication; it does
-not prevent publishing this source repository on GitHub. Review repository
-contents for sensitive data before making it public.
