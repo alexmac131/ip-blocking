@@ -14,7 +14,7 @@ For installing Express-side enforcement, start with
 |---|---|---|
 | Identify suspect traffic | [analyze-nginx-scans.js](../scripts/analyze-nginx-scans.js) | None; terminal report |
 | Inspect weather-related requests | [analyze-nginx-weather.js](../scripts/analyze-nginx-weather.js) | None; terminal report |
-| Accumulate unique attempted pages | [collect-nginx-attempts.js](../scripts/collect-nginx-attempts.js) | Local history JSON/checkpoints |
+| Collect attempted exploit scans against the server | [collect-nginx-attempts.js](../scripts/collect-nginx-attempts.js) | Local history JSON/checkpoints |
 | Enforce the JSON IP list in Nginx | [sync-blocked-ips-to-nginx.sh](../scripts/sync-blocked-ips-to-nginx.sh) | Overwrites deny include and reloads Nginx |
 | Diagnose Nginx/Node connectivity | [diagnose-nginx-node.sh](../scripts/diagnose-nginx-node.sh) | Diagnostic GETs; no config changes |
 | Add selected AWS subnet denies | [apply-aws-nacl-denies.sh](../scripts/apply-aws-nacl-denies.sh) | AWS changes only with `--apply` |
@@ -85,7 +85,7 @@ different casing remain separate output rows.
 
 **Effects:** none. Edit `PATH_TAG` or log paths to adapt the report.
 
-## 3. Persistent attempted-page collector
+## 3. Persistent attempted exploit scan collector
 
 ```bash
 sudo node scripts/collect-nginx-attempts.js
@@ -102,7 +102,7 @@ file identities/hashes; keep this section when backing up.
 
 **Counting rules:**
 
-- Accumulates the suspect analyzer's attempted pages, not all website traffic.
+- Accumulates suspected exploit-scan requests from the analyzer, not all website traffic.
 - Unchanged logs add zero; appended requests add only uncounted attempts.
 - Earlier retained requests may enter the totals when their IP first qualifies.
 - Device/inode tracking recognizes rename-based rotation on the same filesystem.

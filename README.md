@@ -1,7 +1,8 @@
 # IP Blocking Tools
 
 Standalone tools extracted from the server project for reviewing Nginx
-traffic, collecting attempted-page history, and managing reviewed IP denies.
+traffic, collecting attempted exploit scans against the server, and managing
+reviewed IP denies.
 No live IP blocklist, logs, credentials, or deployment configuration is included.
 
 ## Start here

@@ -2,7 +2,7 @@
   "name": "ip-blocking-tools",
   "version": "0.1.0",
   "private": true,
-  "description": "Nginx traffic reports, persistent attempted-page history, and reviewed IP blocking helpers.",
+  "description": "Nginx traffic reports, persistent history of attempted exploit scans, and reviewed IP blocking helpers.",
   "engines": {
     "node": ">=24"
   },
