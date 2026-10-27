@@ -1,0 +1,5 @@
+{
+  "Description": "Empty initial rule list. Populate only with reviewed IPv4 CIDRs.",
+  "Note": "Input for scripts/apply-aws-nacl-denies.sh, not a direct AWS batch import.",
+  "Rules": []
+}

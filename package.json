@@ -1,0 +1,16 @@
+{
+  "name": "ip-blocking-tools",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Nginx traffic reports, persistent attempted-page history, and reviewed IP blocking helpers.",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "check": "node --check scripts/analyze-nginx-scans.js && node --check scripts/analyze-nginx-weather.js && node --check scripts/collect-nginx-attempts.js && bash -n scripts/sync-blocked-ips-to-nginx.sh && bash -n scripts/diagnose-nginx-node.sh && bash -n scripts/apply-aws-nacl-denies.sh",
+    "report:scans": "node scripts/analyze-nginx-scans.js",
+    "report:weather": "node scripts/analyze-nginx-weather.js",
+    "collect:attempts": "node scripts/collect-nginx-attempts.js"
+  }
+}

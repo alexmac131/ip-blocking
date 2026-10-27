@@ -1,0 +1,8 @@
+{
+  "rules": [
+    {
+      "contains": ".env",
+      "reason": "Auto-blocked: requested .env path"
+    }
+  ]
+}
